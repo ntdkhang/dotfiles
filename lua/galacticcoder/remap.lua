@@ -1,8 +1,6 @@
-local Remap = require("galacticcoder.keymap")
-
 vim.g.mapleader = " "
 -- open netrw
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 -- vim.keymap.set("n", "<leader>u", ":UndotreeShow<CR>")
 
 

@@ -8,17 +8,22 @@ return require("packer").startup(function(use)
     use("nvim-lua/popup.nvim")
     use("nvim-telescope/telescope.nvim")
 
+    -- display status line 
     use({
         'nvim-lualine/lualine.nvim',
+        config = function()
+            require("lualine").setup({
+                options = { theme = 'gruvbox-material' }
+            })
+        end
     })
 
     -- All the things
     use("nvim-tree/nvim-tree.lua") -- file explorer tree
     use("nvim-tree/nvim-web-devicons") -- icons for nvim tree
-    use("williamboman/mason.nvim") -- language server installer
+    -- use("williamboman/mason.nvim") -- language server installer
     use("akinsho/toggleterm.nvim") -- floating, toggle floating, toggle  terminal
     use("numToStr/Comment.nvim") -- comment code
-    use("akinsho/bufferline.nvim") -- display buffers
     use("windwp/nvim-autopairs") -- auto pairs brackets
 
     -- LSP
@@ -52,7 +57,7 @@ return require("packer").startup(function(use)
     use("mbbill/undotree")
 
     -- Colorscheme section
-    use("gruvbox-community/gruvbox")
+    use("ellisonleao/gruvbox.nvim")
     use("folke/tokyonight.nvim")
     use({"catppuccin/nvim", as = "catppuccin" })
     use({ 'rose-pine/neovim', as = 'rose-pine' })
@@ -62,11 +67,21 @@ return require("packer").startup(function(use)
         run = ":TSUpdate"
     })
 
-    use("romgrk/nvim-treesitter-context")
-
     use("mfussenegger/nvim-dap")
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")
+
+
+    -- MARKDOWN
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+    use("renerocksai/telekasten.nvim")
 
 	--[[
     --

@@ -4,5 +4,7 @@ require("galacticcoder.remap")
 require("galacticcoder.nvim-tree")
 require("galacticcoder.toggleterm")
 
-vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme kanagawa")
+
+
 require("nvim-autopairs").setup{}
