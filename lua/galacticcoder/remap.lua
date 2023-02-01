@@ -20,6 +20,12 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- greatest remap ever: paste on a selected text and put the selected text to register
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
+-- jump to end of line 
+vim.keymap.set("i", "<C-a>", "<Esc>A")
+-- Ctrl Enter to get new line and move down in insert mode
+vim.keymap.set("i", "<C-o>", "<Esc>o")
+
+
 
 -- yank / delete to clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
@@ -36,8 +42,8 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 
 -- navigate buffers
-vim.keymap.set("n", "<S-l>", ":bnext<CR>")
-vim.keymap.set("n", "<S-h>", ":bprevious<CR>")
+-- vim.keymap.set("n", "<S-l>", ":bnext<CR>")
+-- vim.keymap.set("n", "<S-h>", ":bprevious<CR>")
 
 
 -- indent and stay in visual mode

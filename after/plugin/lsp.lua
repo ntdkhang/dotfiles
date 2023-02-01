@@ -14,6 +14,7 @@ lsp.ensure_installed({
     'sumneko_lua',
     'clangd',
     'pyright',
+    -- 'markdown',
 })
 
 
@@ -48,6 +49,8 @@ lsp.configure('sumneko_lua', {
         }
     }
 })
+
+-- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp
 
 
 lsp.setup()

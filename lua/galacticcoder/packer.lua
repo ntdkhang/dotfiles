@@ -18,13 +18,19 @@ return require("packer").startup(function(use)
         end
     })
 
+
     -- All the things
     use("nvim-tree/nvim-tree.lua") -- file explorer tree
     use("nvim-tree/nvim-web-devicons") -- icons for nvim tree
-    -- use("williamboman/mason.nvim") -- language server installer
     use("akinsho/toggleterm.nvim") -- floating, toggle floating, toggle  terminal
     use("numToStr/Comment.nvim") -- comment code
     use("windwp/nvim-autopairs") -- auto pairs brackets
+    use("lukas-reineke/indent-blankline.nvim") -- show indent of each line
+    use({"nvim-treesitter/nvim-treesitter-context",
+        config = function() 
+            require("treesitter-context").setup({})
+        end
+    }) -- show function name on top 
 
     -- LSP
     use {
@@ -49,6 +55,7 @@ return require("packer").startup(function(use)
         }
     }
 
+
     -- Primeagen doesn"t create lodash
     use("ThePrimeagen/refactoring.nvim")
     use("ThePrimeagen/git-worktree.nvim")
@@ -72,16 +79,45 @@ return require("packer").startup(function(use)
     use("theHamsta/nvim-dap-virtual-text")
 
 
-    -- MARKDOWN
+    -- NOTES
     -- install without yarn or npm
     use({
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
-
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    -- use("renerocksai/telekasten.nvim")
+    use({
+        "nvim-neorg/neorg",
+        run = ":Neorg sync-parsers", -- This is the important bit!
+        -- config = function()
+        --     require("neorg").setup {
+        --         -- configuration here
+        --         load = {
+        --             ["core.defaults"] = {},
+        --             ["core.norg.concealer"] = {
+        --                 config = {
+        --                 }
+        --             }, -- Adds pretty icons to your documents
+        --             ["core.norg.dirman"] = {
+        --                 config = {
+        --                     workspaces = {
+        --                         school = "/Users/dk/Documents/School",
+        --                         home = "/Users/dk/Documents/Personal/Notes/",
+        --                     }
+        --                 }
+        --             },
+        --             ["core.norg.completion"] = {
+        --                 config = {
+        --                     engine = "nvim-cmp"
+        --                 }
+        --             },
+        --             ["core.keybinds"] = {},
+        --         }
+        --     }
+        -- end,
+    })
 
-    use("renerocksai/telekasten.nvim")
 
 	--[[
     --
