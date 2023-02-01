@@ -87,36 +87,6 @@ return require("packer").startup(function(use)
     })
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     -- use("renerocksai/telekasten.nvim")
-    use({
-        "nvim-neorg/neorg",
-        run = ":Neorg sync-parsers", -- This is the important bit!
-        -- config = function()
-        --     require("neorg").setup {
-        --         -- configuration here
-        --         load = {
-        --             ["core.defaults"] = {},
-        --             ["core.norg.concealer"] = {
-        --                 config = {
-        --                 }
-        --             }, -- Adds pretty icons to your documents
-        --             ["core.norg.dirman"] = {
-        --                 config = {
-        --                     workspaces = {
-        --                         school = "/Users/dk/Documents/School",
-        --                         home = "/Users/dk/Documents/Personal/Notes/",
-        --                     }
-        --                 }
-        --             },
-        --             ["core.norg.completion"] = {
-        --                 config = {
-        --                     engine = "nvim-cmp"
-        --                 }
-        --             },
-        --             ["core.keybinds"] = {},
-        --         }
-        --     }
-        -- end,
-    })
 
 
 	--[[
