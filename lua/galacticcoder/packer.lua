@@ -22,15 +22,16 @@ return require("packer").startup(function(use)
     -- All the things
     use("nvim-tree/nvim-tree.lua") -- file explorer tree
     use("nvim-tree/nvim-web-devicons") -- icons for nvim tree
-    use("akinsho/toggleterm.nvim") -- floating, toggle floating, toggle  terminal
+    -- use("akinsho/toggleterm.nvim") -- floating, toggle floating, toggle  terminal
     use("numToStr/Comment.nvim") -- comment code
     use("windwp/nvim-autopairs") -- auto pairs brackets
-    use("lukas-reineke/indent-blankline.nvim") -- show indent of each line
-    use({"nvim-treesitter/nvim-treesitter-context",
-        config = function() 
-            require("treesitter-context").setup({})
-        end
-    }) -- show function name on top 
+    -- use("lukas-reineke/indent-blankline.nvim") -- show indent of each line
+
+    -- use({"nvim-treesitter/nvim-treesitter-context",
+    --     config = function() 
+    --         require("treesitter-context").setup({})
+    --     end
+    -- }) -- show function name on top 
 
     -- LSP
     use {
@@ -55,6 +56,38 @@ return require("packer").startup(function(use)
         }
     }
 
+    use {
+        'xbase-lab/xbase',
+        run = 'make install', -- or "make install && make free_space" (not recommended, longer build time)
+        config = function ()
+            require'xbase'.setup({
+                log_level = vim.log.levels.INFO,
+                log_buffer = {
+                    focus  = false,
+                    default_direction = "horizontal",
+                },
+                sourcekit = {
+                },
+                simctl = {
+                    iOS = {
+                        "iPhone 14 Pro",
+                    },
+                },
+                mappings = {
+                    --- Whether xbase mapping should be disabled.
+                    enable = true,
+                    --- Open build picker. showing targets and configuration.
+                    build_picker = 0, --- set to 0 to disable
+                    --- Open run picker. showing targets, devices and configuration
+                    run_picker = 0, --- set to 0 to disable
+                    --- Open watch picker. showing run or build, targets, devices and configuration
+                    watch_picker = 0, --- set to 0 to disable
+                    --- A list of all the previous pickers
+                    all_picker = "<leader>ef", --- set to 0 to disable
+                },
+            })
+        end
+    }
 
     -- Primeagen doesn"t create lodash
     use("ThePrimeagen/refactoring.nvim")
@@ -65,9 +98,6 @@ return require("packer").startup(function(use)
 
     -- Colorscheme section
     use("ellisonleao/gruvbox.nvim")
-    use("folke/tokyonight.nvim")
-    use({"catppuccin/nvim", as = "catppuccin" })
-    use({ 'rose-pine/neovim', as = 'rose-pine' })
     use("rebelot/kanagawa.nvim")
 
     use("nvim-treesitter/nvim-treesitter", {
@@ -80,14 +110,8 @@ return require("packer").startup(function(use)
 
 
     -- NOTES
-    -- install without yarn or npm
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-    use("renerocksai/telekasten.nvim")
-
+    -- use("renerocksai/telekasten.nvim")
+    use("mickael-menu/zk-nvim")
 
 	--[[
     --

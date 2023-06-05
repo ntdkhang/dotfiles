@@ -11,7 +11,7 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.ensure_installed({
-    'sumneko_lua',
+    'lua_ls',
     'clangd',
     'pyright',
     -- 'markdown',
@@ -21,10 +21,10 @@ lsp.ensure_installed({
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
-  if client.name == "eslint" then
-      vim.cmd.LspStop('eslint')
-      return
-  end
+  -- if client.name == "eslint" then
+  --     vim.cmd.LspStop('eslint')
+  --     return
+  -- end
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -40,7 +40,7 @@ end)
 
 
 
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
@@ -52,6 +52,40 @@ lsp.configure('sumneko_lua', {
 
 -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp
 
+
+-- require'xbase'.setup({
+--     log_level = vim.log.levels.INFO,
+--     log_buffer = {
+--         focus  = false,
+--         default_direction = "horizontal",
+--     },
+--     sourcekit = {
+--     },
+--     simctl = {
+--         iOS = {
+--             "iPhone 14 Pro",
+--         },
+--     },
+--     mappings = {
+--         --- Whether xbase mapping should be disabled.
+--         enable = true,
+--         --- Open build picker. showing targets and configuration.
+--         build_picker = 0, --- set to 0 to disable
+--         --- Open run picker. showing targets, devices and configuration
+--         run_picker = 0, --- set to 0 to disable
+--         --- Open watch picker. showing run or build, targets, devices and configuration
+--         watch_picker = 0, --- set to 0 to disable
+--         --- A list of all the previous pickers
+--         all_picker = "<leader>ef", --- set to 0 to disable
+--     },
+-- })
+
+
+local lsp_config = require('lspconfig')
+lsp_config.sourcekit.setup{
+    -- cmd = { '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp' },
+    root_dir = lsp_config.util.root_pattern("Package.swift", ".git", "*.xcodeproj"),
+}
 
 lsp.setup()
 
